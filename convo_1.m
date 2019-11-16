@@ -1,0 +1,31 @@
+t=linspace(0,8,20000);
+i=t>=0 & t<=8;
+x(i)=exp(-2*t(i));
+figure(1);
+plot(t,x,'linewidth',2);
+ylim([0,1.5]);
+grid on;
+xlabel('t');
+ylabel('x(t)');
+title('x(t)');
+
+t=linspace(0,6,20000);
+i=t>=0 & t<=1;
+h(i)=1-t(i);
+i=t>1 & t<=6;
+h(i)=0;
+figure(2);
+plot(t,h,'linewidth',2);
+ylim([0,3]);
+grid on;
+xlabel('t');
+ylabel('h(t)');
+title('h(t)');
+
+z=median(diff(t))*conv(x,h,'same');
+figure(3);
+plot(t,z,'linewidth',2);
+grid on;
+xlabel('t');
+ylabel('y(t)');
+title('Convolved graph');
